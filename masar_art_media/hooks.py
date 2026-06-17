@@ -43,7 +43,10 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+ "Task" : "custom/task/task.js",
+ "Sales Order" : "custom/sales_order/sales_order.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -137,13 +140,26 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Sales Order": {
+		"on_submit" : "masar_art_media.custom.sales_order.sales_order.on_submit"
+	}, 
+    "Sales Invoice":{
+        "validate" : "masar_art_media.utils.validate_mandatory_project"
+    }, 
+    "Purchase Order":{
+        "validate" : "masar_art_media.utils.validate_mandatory_project"
+    }, 
+    "Purchase Receipt":{
+        "validate" : "masar_art_media.utils.validate_mandatory_project"
+    }, 
+    "Purchase Invoice":{
+        "validate" : "masar_art_media.utils.validate_mandatory_project"
+    },
+    "Task":{
+        "validate" : "masar_art_media.custom.task.task.validate"
+    }
+}
 
 # Scheduled Tasks
 # ---------------
@@ -247,3 +263,45 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+fixtures = [
+    {"dt": "Custom Field", "filters": [
+        [
+            "name", "in", [
+                # Quotation Item
+                "Quotation Item-custom_section_break_nmz4f",
+                "Quotation Item-custom_project_estimation",
+                "Quotation Item-custom_column_break_ikxdg",
+                "Quotation Item-custom_pe_details", 
+                # Sales Order
+                "Sales Order-custom_tab_6",
+                "Sales Order-custom_units",
+                "Sales Order-custom_production_units"
+            ]
+        ]
+    ]
+    },
+    {
+        "doctype": "Property Setter",
+        "filters": [
+            [
+                    "name","in",[
+                        "Quotation Item-main-field_order",
+                        "Sales Order-main-field_order"
+                    ]
+            ]       
+        ]
+    }, 
+    {
+        "doctype": "Production Unit",
+        "filters": [
+        [
+                "name","in",[
+                    "Design",
+                    "Carpentry",
+                    "Signs",
+                    "Printing",
+                    "Civil Works"
+                ]
+        ]       
+    ]}, 
+]

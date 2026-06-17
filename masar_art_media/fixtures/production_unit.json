@@ -1,0 +1,52 @@
+[
+ {
+  "default": 1,
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Production Unit",
+  "enabled": 1,
+  "modified": "2026-06-17 13:35:43.526427",
+  "name": "Design",
+  "production_unit": "Design"
+ },
+ {
+  "default": 1,
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Production Unit",
+  "enabled": 1,
+  "modified": "2026-06-17 13:35:43.464005",
+  "name": "Carpentry",
+  "production_unit": "Carpentry"
+ },
+ {
+  "default": 1,
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Production Unit",
+  "enabled": 1,
+  "modified": "2026-06-17 13:35:43.349432",
+  "name": "Signs",
+  "production_unit": "Signs"
+ },
+ {
+  "default": 1,
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Production Unit",
+  "enabled": 1,
+  "modified": "2026-06-17 13:35:43.066969",
+  "name": "Printing",
+  "production_unit": "Printing"
+ },
+ {
+  "default": 1,
+  "description": null,
+  "docstatus": 0,
+  "doctype": "Production Unit",
+  "enabled": 1,
+  "modified": "2026-06-17 13:35:43.242537",
+  "name": "Civil Works",
+  "production_unit": "Civil Works"
+ }
+]
