@@ -198,9 +198,9 @@ doc_events = {
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
-# override_doctype_dashboards = {
-# 	"Task": "masar_art_media.task.get_dashboard_data"
-# }
+override_doctype_dashboards = {
+    "Quotation": "masar_art_media.custom.quotation.quotation_dashboard.get_dashboard_data"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #

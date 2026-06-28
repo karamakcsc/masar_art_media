@@ -48,7 +48,7 @@ def create_peroject_from_sales_order(self):
             "parent_task": parent_task.name,
             "status": "Open",
             "expected_start_date": nowdate(),
-            "expected_end_date": add_days(nowdate(), 7),
+            "expected_end_date":self.delivery_date,
             })
         child_task.insert(ignore_permissions=True)
     for item in self.items:
