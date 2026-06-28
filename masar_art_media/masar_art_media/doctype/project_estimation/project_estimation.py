@@ -55,7 +55,7 @@ def make_quotation(source_name, target_doc=None, args=None):
                     "customer": "party_name",
                     "company" : "company", 
                     "posting_date" :  "transaction_date",
-                    "SAL-QTN-.YYYY.-" : "naming_series",
+                     "naming_series":"SAL-QTN-.YYYY.-" ,
                 },
                 "validation": {
                     "docstatus": ["=", 1],
