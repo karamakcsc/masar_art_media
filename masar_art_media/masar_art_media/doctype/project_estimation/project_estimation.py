@@ -36,7 +36,6 @@ def make_quotation(source_name, target_doc=None, args=None):
         target.description = obj.description
         target.item_group = obj.item_group
         target.qty = obj.qty
-        target.naming_series = 'SAL-QTN-.YYYY.-'
         target.uom = frappe.db.get_value('Item', obj.item_code, 'stock_uom')
         target.rate = obj.final_selling_price
         target.ignore_pricing_rule = 1
@@ -56,6 +55,7 @@ def make_quotation(source_name, target_doc=None, args=None):
                     "customer": "party_name",
                     "company" : "company", 
                     "posting_date" :  "transaction_date",
+                    "SAL-QTN-.YYYY.-" : "naming_series",
                 },
                 "validation": {
                     "docstatus": ["=", 1],
