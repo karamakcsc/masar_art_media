@@ -1,21 +1,21 @@
 import frappe , time
 from frappe import _
-from frappe.utils import flt, now_datetime, get_datetime
+from frappe.utils import flt, now_datetime, get_datetime , getdate
 
 def validate(self , method):
-    validate_task_hierarchy_and_security(self)
     frappe.enqueue(update_parent_task_status_and_progress,self=self)
+def before_validate(self , method):
+    if self.parent_task:
+        parent_doc = frappe.get_doc("Task", self.parent_task)
+        if getdate(self.exp_end_date) > getdate(parent_doc.exp_end_date):
+            parent_doc.exp_end_date = self.exp_end_date
+            parent_doc.flags.from_backend_automation = True
+            parent_doc.save(ignore_permissions=True)
+        frappe.db.commit()
+        
     
-
-def validate_task_hierarchy_and_security(self):
-    if self.is_group and frappe.session.user != "Administrator":
-        if not self.flags.from_backend_automation:
-            frappe.throw(
-                _("Group Parent Tasks are managed automatically by the system. Only the Administrator can modify them manually."),
-                title=_("Access Restricted")
-            )
-            
-            
+    
+                    
 def update_parent_task_status_and_progress(self):
     time.sleep(0.5)
     frappe.db.commit()

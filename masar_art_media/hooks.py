@@ -157,7 +157,8 @@ doc_events = {
         "validate" : "masar_art_media.utils.validate_mandatory_project"
     },
     "Task":{
-        "validate" : "masar_art_media.custom.task.task.validate"
+        "validate" : "masar_art_media.custom.task.task.validate", 
+        "before_validate" : "masar_art_media.custom.task.task.before_validate"
     }
 }
 

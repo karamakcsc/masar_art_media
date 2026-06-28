@@ -23,6 +23,7 @@ def create_peroject_from_sales_order(self):
         'company' : self.company,
         'estimated_costing' : flt(estimated_costing[0][0]) if estimated_costing else 0,
         'total_sales_amount' : self.grand_total,
+        'percent_complete_method' : 'Task Progress',
         
     })
     project.insert(ignore_permissions = True)
@@ -34,9 +35,9 @@ def create_peroject_from_sales_order(self):
         "project": project.name,
         "status": "Open",
         "expected_start_date": nowdate(),
-        "expected_end_date": add_days(nowdate(), 14),
         "is_group": 1
     })
+    parent_task.flags.from_backend_automation = True
     parent_task.insert(ignore_permissions=True)
     
     for unit in self.custom_units:
