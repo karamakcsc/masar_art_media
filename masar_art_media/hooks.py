@@ -45,7 +45,8 @@ app_license = "mit"
 # include js in doctype views
 doctype_js = {
  "Task" : "custom/task/task.js",
- "Sales Order" : "custom/sales_order/sales_order.js"
+ "Sales Order" : "custom/sales_order/sales_order.js",
+ "Quotation" : "custom/quotation/quotation.js"
 }
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
@@ -143,7 +144,12 @@ doctype_js = {
 doc_events = {
 	"Sales Order": {
 		"on_submit" : "masar_art_media.custom.sales_order.sales_order.on_submit"
-	}, 
+	},
+	"Quotation": {
+		"before_submit": "masar_art_media.custom.quotation.quotation.before_submit",
+		"before_cancel": "masar_art_media.custom.quotation.quotation.before_cancel",
+        "before_insert": "masar_art_media.custom.quotation.quotation.before_insert"
+	},
     "Sales Invoice":{
         "validate" : "masar_art_media.utils.validate_mandatory_project"
     }, 
@@ -272,7 +278,7 @@ fixtures = [
                 "Quotation Item-custom_section_break_nmz4f",
                 "Quotation Item-custom_project_estimation",
                 "Quotation Item-custom_column_break_ikxdg",
-                "Quotation Item-custom_pe_details", 
+                "Quotation Item-custom_costing_amount", 
                 # Sales Order
                 "Sales Order-custom_tab_6",
                 "Sales Order-custom_units",
@@ -287,6 +293,7 @@ fixtures = [
             [
                     "name","in",[
                         "Quotation Item-main-field_order",
+                        "Quotation Item-rate-read_only",
                         "Sales Order-main-field_order"
                     ]
             ]       

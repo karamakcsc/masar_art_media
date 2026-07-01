@@ -1,15 +1,11 @@
 from frappe import _
 
-
 def get_dashboard_data(data):
     data["transactions"].append({
-        "label": _("Reference"),
-        "items": ["Project Estimation"]
+        "label": _("Costing"),
+        "items": ["Costing Sheet"]
     })
-
-    if not data.get("internal_links"):
-        data["internal_links"] = {}
-
-    data["internal_links"]["Project Estimation"] = ["items", "custom_project_estimation"]
-
+    if not data.get("non_standard_fieldnames"):
+        data["non_standard_fieldnames"] = {}
+    data["non_standard_fieldnames"]["Costing Sheet"] = "quotation"
     return data

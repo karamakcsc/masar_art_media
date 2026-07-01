@@ -8,11 +8,10 @@ def on_submit(self , method):
 def create_peroject_from_sales_order(self):
     estimated_costing =  frappe.db.sql(
         f"""SELECT 
-                SUM(IFNULL(pei.rate * soi.qty, 0))  AS estimated_costing 
+                qi.custom_costing_amount  AS estimated_costing 
             FROM `tabSales Order` so 
             INNER JOIN `tabSales Order Item` soi ON so.name = soi.parent 
             INNER JOIN `tabQuotation Item` qi ON soi.quotation_item  = qi.name 
-            INNER JOIN `tabProject Estimation Item` pei ON pei.name = qi.custom_pe_details 
             WHERE so.name = '{self.name}'"""
     )
     project = frappe.get_doc({

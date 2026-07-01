@@ -10,10 +10,16 @@
   "naming_series",
   "customer",
   "customer_name",
+  "quotation",
+  "quotation_item",
   "column_break_elow",
   "company",
   "posting_date",
   "amended_from",
+  "sales_item_section",
+  "sales_item_code",
+  "column_break_sicd",
+  "item_description",
   "items_section",
   "items",
   "section_break_qhdc",
@@ -24,8 +30,7 @@
   "profit_margin_percentage",
   "column_break_rbzy",
   "final_selling_price",
-  "profit_amount",
-  "connections_tab"
+  "profit_amount"
  ],
  "fields": [
   {
@@ -37,7 +42,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Project Estimation",
+   "options": "Costing Sheet",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -56,6 +61,23 @@
    "fieldname": "customer_name",
    "fieldtype": "Data",
    "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "quotation",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Quotation",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "quotation_item",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Quotation Item Row",
+   "no_copy": 1,
    "read_only": 1
   },
   {
@@ -78,23 +100,47 @@
    "reqd": 1
   },
   {
-   "default": "EST-.YYYY.-.",
+   "default": "CS-.YYYY.-.",
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Series",
-   "options": "\nEST-.YYYY.-.",
+   "options": "\nCS-.YYYY.-.",
    "reqd": 1
+  },
+  {
+   "fieldname": "sales_item_section",
+   "fieldtype": "Section Break",
+   "label": "Quoted Item"
+  },
+  {
+   "fieldname": "sales_item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sales Item",
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_sicd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_description",
+   "fieldtype": "Small Text",
+   "label": "Item Description",
+   "read_only": 1
   },
   {
    "fieldname": "items_section",
    "fieldtype": "Section Break",
-   "label": "Items"
+   "label": "Cost Elements"
   },
   {
    "fieldname": "items",
    "fieldtype": "Table",
-   "options": "Project Estimation Item"
+   "label": "Cost Items",
+   "options": "Costing Sheet Details"
   },
   {
    "fieldname": "section_break_qhdc",
@@ -117,7 +163,7 @@
    "fieldtype": "Currency",
    "in_list_view": 1,
    "in_standard_filter": 1,
-   "label": "Total",
+   "label": "Total Cost",
    "read_only": 1
   },
   {
@@ -128,7 +174,7 @@
    "default": "0",
    "fieldname": "profit_margin_percentage",
    "fieldtype": "Percent",
-   "label": "Profit Margin Percentage"
+   "label": "Profit Margin %"
   },
   {
    "fieldname": "column_break_rbzy",
@@ -147,28 +193,16 @@
    "fieldtype": "Currency",
    "label": "Profit Amount",
    "read_only": 1
-  },
-  {
-   "fieldname": "connections_tab",
-   "fieldtype": "Tab Break",
-   "label": "Connections",
-   "show_dashboard": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
- "links": [
-  {
-   "link_doctype": "Quotation",
-   "link_fieldname": "custom_project_estimation",
-   "table_fieldname": "items"
-  }
- ],
- "modified": "2026-06-15 14:01:52.672927",
+ "links": [],
+ "modified": "2026-06-30 16:05:33.233427",
  "modified_by": "Administrator",
  "module": "Masar Art Media",
- "name": "Project Estimation",
+ "name": "Costing Sheet",
  "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [

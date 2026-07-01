@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestProjectEstimation(FrappeTestCase):
+class TestCostingSheet(FrappeTestCase):
 	pass
